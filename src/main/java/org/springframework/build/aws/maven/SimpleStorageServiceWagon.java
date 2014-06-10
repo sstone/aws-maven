@@ -28,6 +28,7 @@ import org.apache.maven.wagon.authentication.AuthenticationException;
 import org.apache.maven.wagon.authentication.AuthenticationInfo;
 import org.apache.maven.wagon.proxy.ProxyInfoProvider;
 import org.apache.maven.wagon.repository.Repository;
+import org.codehaus.plexus.util.FileUtils;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -171,6 +172,12 @@ public final class SimpleStorageServiceWagon extends AbstractWagon {
     protected void putResource(File source, String destination, TransferProgress transferProgress) throws TransferFailedException,
             ResourceDoesNotExistException {
         String key = getKey(destination);
+        final String extension = FileUtils.extension(destination);
+        if ((extension.equals("jar") || extension.equals("war") || extension.equals("zip") || extension.equals("pom"))
+                && !destination.contains("SNAPSHOT")
+                && doesRemoteResourceExist(destination)) {
+            throw new TransferFailedException(String.format("Cannot overwrite existing file '%s'", destination));
+        }
 
         mkdirs(key, 0);
 
