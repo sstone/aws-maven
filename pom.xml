@@ -11,7 +11,7 @@
 	<groupId>com.github.sstone</groupId>
 	<artifactId>aws-maven</artifactId>
 	<packaging>jar</packaging>
-	<version>5.1.0.BUILD-SNAPSHOT</version>
+	<version>5.1.0.1-SNAPSHOT</version>
 	<name>Amazon Web Services S3 Maven Wagon Support</name>
 	<description>Standard Maven wagon support for s3:// urls</description>
 
@@ -137,15 +137,17 @@
 		</license>
 	</licenses>
 
-	<scm>
-		<connection>scm:git:https://github.com/sstone/aws-maven.git</connection>
-		<url>https://github.com/sstone/aws-maven</url>
-	</scm>
+    <scm>
+        <connection>scm:git:git@github.com:sstone/aws-maven.git</connection>
+        <developerConnection>scm:git:git@github.com:sstone/aws-maven.git</developerConnection>
+        <url>git@github.com:sstone/aws-maven.git</url>
+    </scm>
+
 
 
 	<issueManagement>
 		<system>Github</system>
-		<url>https://github.com/spring-projects/sstone/issues</url>
+		<url>https://github.com/sstone/aws-maven/issues</url>
 	</issueManagement>
 
 	<developers>
